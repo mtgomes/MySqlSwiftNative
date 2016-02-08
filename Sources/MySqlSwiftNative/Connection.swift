@@ -33,12 +33,16 @@ public extension MySQL.Connection {
         try self.open(self.addr!, user: self.user!, passwd: self.passwd, dbname: self.dbname)
     }
     
-    public func open(addr:String, user:String, passwd:String? = nil, dbname:String? = nil) throws {
+    public func open(addr:String, user:String, passwd:String? = nil, dbname:String? = nil, port:Int? = nil) throws {
         
         self.addr = addr
         self.user = user
         self.passwd = passwd
         self.dbname = dbname
+        
+        if let p = port where p > 0 && p < 65535{
+            self.port = p
+        }
         
         try self.connect()
         try self.auth()

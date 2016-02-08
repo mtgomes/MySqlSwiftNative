@@ -69,7 +69,7 @@ public struct MySQL {
             self.passwd = passwd
             self.dbname = dbname
             
-            if let p = port{
+            if let p = port where p > 0 && p < 65535{
                 self.port = p
             }
         }
