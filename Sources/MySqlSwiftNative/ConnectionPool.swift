@@ -29,7 +29,7 @@ public class ConnectionPool {
         cons = [ConStruct]()
         
         for _ in 0..<numCon {
-            let c = try MySQL.Connection(addr: connection.addr!, user: connection.user!, passwd: connection.passwd, dbname: connection.dbname)
+            let c = try MySQL.Connection(addr: connection.addr!, user: connection.user!, passwd: connection.passwd, dbname: connection.dbname, port: connection.port)
             try c.open()
             cons.append(ConStruct(con: c, connected: false))
         }
