@@ -48,7 +48,7 @@ public class ConnectionPool {
                 }
             }
             if (con == nil) {
-                let c = try? MySQL.Connection(addr: self.conn.addr!, user: self.conn.user!, passwd: self.conn.passwd, dbname: self.conn.dbname)
+                let c = try? MySQL.Connection(addr: self.conn.addr!, user: self.conn.user!, passwd: self.conn.passwd, dbname: self.conn.dbname, port: self.conn.port)
                 try? c?.open()
                     let cs = ConStruct(con: c!, connected: false)
                     self.cons.append(cs)

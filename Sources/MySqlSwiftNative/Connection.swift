@@ -92,8 +92,17 @@ public extension MySQL.Connection {
             msh.cap_flags = data[pos...pos+2].uInt16()
             pos += 2
             
-            if data.count > pos {
+            if data.count > pos{
                 pos += 1 + 2 + 2 + 1 + 10
+                
+                // I keep on getting "fatal error: Array index out of range", so need to validate
+                /*if data.count > pos+12{
+                    let c = Array(data[pos..<pos+12])
+                    msh.scramble?.appendContentsOf(c)
+                }
+                else{
+                    print("Error in the count. Have data with \(data.count) and want to access \(pos+12)")
+                }*/
                 
                 let c = Array(data[pos..<pos+12])
                 msh.scramble?.appendContentsOf(c)
